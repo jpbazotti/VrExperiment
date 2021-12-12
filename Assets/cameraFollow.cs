@@ -15,7 +15,6 @@ public class cameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(camPos.rotation.x);
         Vector3 newVec = new Vector3(camPos.position.x, camPos.position.y - 0.65f, camPos.position.z);
         transform.LookAt(newVec);
         Vector3 modifier = Vector3.ProjectOnPlane(camPos.forward+(camPos.up*1.5f), Vector3.up).normalized;
