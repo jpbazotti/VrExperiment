@@ -36,7 +36,7 @@ public class playerController : MonoBehaviour
         right.Normalize();
         //Vector3 headRotation = Vector3.ProjectOnPlane(head.forward + (head.up * 1.5f), Vector3.up).normalized;
         //transform.forward=(headRotation);
-        Vector3 mov= (forward * direction.z + right * direction.x);
+        Vector3 mov= (forward * direction.z + right * direction.x) * speed;
         rb.velocity = mov;
         Debug.DrawLine(transform.position,transform.position + forward * direction.x + right * direction.z, Color.blue);
         
