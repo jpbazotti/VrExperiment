@@ -19,7 +19,7 @@ public class cameraFollow : MonoBehaviour
         transform.LookAt(newVec);
         Vector3 modifier = Vector3.ProjectOnPlane(camPos.forward+(camPos.up*1.5f), Vector3.up).normalized;
         transform.position = newVec-(modifier*0.1f);
-        Debug.DrawLine(camPos.position,camPos.position + Vector3.ProjectOnPlane(camPos.forward, Vector3.up).normalized, Color.blue);
+        //Debug.DrawLine(camPos.position,camPos.position + Vector3.ProjectOnPlane(camPos.forward, Vector3.up).normalized, Color.blue);
        
     }
 }
