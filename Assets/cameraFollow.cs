@@ -5,6 +5,7 @@ using UnityEngine;
 public class cameraFollow : MonoBehaviour
 {
     public Transform camPos;
+    public float offsetxy;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +19,9 @@ public class cameraFollow : MonoBehaviour
         Vector3 newVec = new Vector3(camPos.position.x, camPos.position.y - 0.75f, camPos.position.z);
         Vector3 newRotation = new Vector3(0, camPos.eulerAngles.y, 0);
         transform.eulerAngles = newRotation;
-        Vector3 modifier = transform.forward.normalized;
-        modifier.y = 0;
-        Debug.DrawLine(transform.position, transform.position + modifier);
-        modifier = modifier.normalized;
-        if (camPos.rotation.x <= 0.75)
-        {
-            transform.position = newVec + (modifier * -0.2f);
-        }
-        else
-        {
-            transform.position = newVec + (modifier * 0.2f);
-        }
+        Vector3 modifier = Vector3.ProjectOnPlane(camPos.forward, Vector3.up).normalized;
+        transform.position = newVec-(modifier*0.1f);
+        Debug.DrawLine(camPos.position,camPos.position + Vector3.ProjectOnPlane(camPos.forward, Vector3.up).normalized, Color.blue);
+       
     }
 }
